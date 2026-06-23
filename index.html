@@ -247,6 +247,39 @@
 </style>
 </head>
 <body>
+  <!-- ===== PASSWORD LOCK ===== -->
+<div id="lock-screen" style="position:fixed;inset:0;z-index:9999;background:#0D2118;display:flex;align-items:center;justify-content:center;">
+  <div style="text-align:center;color:#fff;padding:40px;">
+    <svg width="40" height="40" viewBox="0 0 24 24" fill="none" style="margin-bottom:20px;display:block;margin-left:auto;margin-right:auto;"><path d="M12 21V10" stroke="#E8C874" stroke-width="2" stroke-linecap="round"/><path d="M12 12C12 8 9 6 4.5 6C4.5 10.5 8 12 12 12Z" fill="#E8C874"/><path d="M12 10C12 6 15 4 19.5 4C19.5 8.5 16 10 12 10Z" fill="#fff"/></svg>
+    <div style="font-family:system-ui,sans-serif;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:#7DB89C;margin-bottom:8px;">NH NONGWOO BIO</div>
+    <div style="font-family:system-ui,sans-serif;font-size:22px;font-weight:800;color:#fff;margin-bottom:28px;letter-spacing:-.02em;">경영지원본부 · 2026</div>
+    <input id="pw-input" type="password" placeholder="비밀번호 입력"
+      style="width:220px;padding:12px 16px;border-radius:10px;border:1.5px solid rgba(255,255,255,.2);background:rgba(255,255,255,.07);color:#fff;font-size:15px;outline:none;text-align:center;letter-spacing:.15em;font-family:system-ui,sans-serif;"
+      onkeydown="if(event.key==='Enter')checkPW()"
+    />
+    <div id="pw-error" style="margin-top:10px;font-size:12px;color:#e08a3c;height:18px;font-family:system-ui,sans-serif;"></div>
+    <button onclick="checkPW()"
+      style="display:block;margin:14px auto 0;padding:11px 32px;border-radius:10px;background:linear-gradient(135deg,#3C8C68,#22624A);border:none;color:#fff;font-size:14px;font-weight:700;cursor:pointer;font-family:system-ui,sans-serif;letter-spacing:.04em;">
+      입장
+    </button>
+  </div>
+</div>
+<script>
+  function checkPW(){
+    var v=document.getElementById('pw-input').value;
+    var e=document.getElementById('pw-error');
+    if(v==='0312181120'){
+      document.getElementById('lock-screen').style.display='none';
+      e.textContent='';
+    } else {
+      e.textContent='비밀번호가 맞지 않습니다.';
+      document.getElementById('pw-input').value='';
+      document.getElementById('pw-input').focus();
+    }
+  }
+  document.getElementById('pw-input').focus();
+</script>
+<!-- ===== /PASSWORD LOCK ===== -->
 <div class="wrap">
 
   <nav class="side">
